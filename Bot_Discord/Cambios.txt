@@ -1,0 +1,7 @@
+-Se hicieron ajustes a las conexiones de RabbitMQ para retrasar el cierre de conexiones debido a inactividad.
+
+-Se añadio una forma en la que el bot pueda responder por el canal en el cual se utilizo el comando.
+
+-Se añadio un componente que extrae enlaces con imagenes de reddit y las publica en discord.
+
+-Se añadio un tiempo de espera al run_architecture.sh para que la mariaDB y rabbitMQ puedan inicializarse propiamente.
