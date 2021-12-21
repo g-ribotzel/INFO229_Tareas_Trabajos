@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  db:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: "example"
+      MYSQL_DATABASE: "tutorial1"
+      MYSQL_USER: "my-api"
+      MYSQL_PASSWORD: "my-api-pass"
+    volumes:
+      - mariadb_data:/data
+      - .:/docker-entrypoint-initdb.d
+    networks:
+      - db_network
+  web:
+    build: .
+    command: uvicorn my-api.main:app --host 0.0.0.0
+    volumes:
+      - .:/my-api
+    ports:
+      - 8000:8000
+    networks:
+      - db_network
+volumes:  
+  mariadb_data:
+networks:
+  db_network:
